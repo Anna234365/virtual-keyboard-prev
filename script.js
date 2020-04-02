@@ -262,6 +262,7 @@ class Keyboards {
         let ShiftRight = document.getElementById('ShiftRight');
 
         if (!event.target.classList.contains('button') && !event.target.parentNode.classList.contains('button')) {return};
+        if (!event.target.classList == undefined) {return};
 
         if (event.target.id == 'CapsLock') {
             event.target.classList.contains('active') ?
@@ -270,6 +271,13 @@ class Keyboards {
         } else {
             event.target.classList.add('active');
             event.target.parentNode.classList.add('active');
+        }
+
+        if (event.target.id == 'ControlLeft' && document.getElementById('ShiftLeft').classList.contains('active')) {
+            document.getElementById('ShiftLeft').classList.remove('active');
+            this.shiftStatus = false;
+            this.changeLanguage();
+            return;
         }
        
         if (event.target.parentNode.classList.contains('doubleInputButton') && this.shiftStatus == false) {
@@ -289,11 +297,9 @@ class Keyboards {
             
             } else if (this.shiftStatus == true && this.CapsLockStatus == false) {
                 this.printedText.value += AllCodesAndKeys[event.target.id][1];
-
                 this.shiftStatus = false;
                 ShiftLeft.classList.remove('active');
                 ShiftRight.classList.remove('active');
-
             }
 
             else if (this.shiftStatus == false && this.CapsLockStatus == true) {
@@ -376,16 +382,20 @@ class Keyboards {
         
     MouseUp(event) {
         if (event.target.id != 'CapsLock' && !event.target.id.match(/.*(Shift)/)) {
-            event.target.classList.remove('active');
-            event.target.parentNode.classList.remove('active');
-            event.relatedTarget.classList.remove('active'); //CHECK!!!
+            if (event.target.classList != undefined) {
+                event.target.classList.remove('active');
+            }
+            if (event.target.parentNode.classList != undefined) {
+                event.target.parentNode.classList.remove('active');
+            }
         }
     }
 
-    MouseOut () {
-        if (event.target === event.relatedTarget) {
+    MouseOut (event) {
+        
+        if (event.target == null) {
             return;
-        } else {
+        } else if (event.target.id != 'CapsLock' && !event.target.id.match(/.*(Shift)/)) {
             event.target.classList.remove('active');
         }
     }
