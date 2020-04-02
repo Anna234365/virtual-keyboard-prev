@@ -7,7 +7,7 @@ const line_4_EN = ['Shift','Z','X','C','V','B','N','M',[',','<'],['.','>'],['/',
 const line_5 = ['Ctrl','Win','Alt','&ensp;','Alt','Ctrl',' &larr;','&darr;','&rarr;'];
 
 const line_1_RU = ['Ё',['1','!'],['2','"'],['3','№'],['4',';'],['5','%'],['6',':'],['7','?'],['8','*'],['9','('],['0',')'],['-','_'],['=','+'],'Backspace'];
-const line_2_RU = ['Tab','Й','Ц','У','К','Е','Н','Г','Ш','Щ','З','Х','Ъ',['\\','|']];
+const line_2_RU = ['Tab','Й','Ц','У','К','Е','Н','Г','Ш','Щ','З','Х','Ъ',['\\','/']];
 const line_3_RU = ['CapsLock','Ф','Ы','В','А','П','Р','О','Л','Д','Ж','Э','ENTER'];
 const line_4_RU = ['Shift','Я','Ч','С','М','И','Т','Ь','Б','Ю',['.',','],'&uarr;','Shift'];
 
@@ -189,14 +189,14 @@ class Keyboards {
             }
 
             else if (this.shiftStatus == false && this.CapsLockStatus == true) {
-                if (!event.code.match(/(Digit)[0-9]/) && !event.code.match(/.*(ash)/)) {
+                if (!event.code.match(/(Digit)[0-9]/) && !event.code.match(/.*(ash)/) && event.code != 'Backquote') {
                     this.printedText.value += AllCodesAndKeys[event.code][1];
                 } else {
                     this.printedText.value += AllCodesAndKeys[event.code][0];
                 }
                   
             } else if (this.shiftStatus == true && this.CapsLockStatus == true) {
-                if (!event.code.match(/(Digit)[0-9]/) && !event.code.match(/.*(ash)/)) {
+                if (!event.code.match(/(Digit)[0-9]/) && !event.code.match(/.*(ash)/) && event.code != 'Backquote') {
                     this.printedText.value += AllCodesAndKeys[event.code][0];
                 } else {
                     this.printedText.value += AllCodesAndKeys[event.code][1];
