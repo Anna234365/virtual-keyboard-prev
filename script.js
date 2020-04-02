@@ -154,6 +154,7 @@ class Keyboards {
         document.addEventListener('keyup', (event) => this.RealKeyUp(event));
         document.addEventListener('mousedown', (event) => this.MouseDown(event));
         document.addEventListener('mouseup', (event) => this.MouseUp(event));
+        document.addEventListener('mouseout', (event) => this.MouseOut(event));
     }
 
     RealKeyDown(event) {
@@ -377,6 +378,15 @@ class Keyboards {
         if (event.target.id != 'CapsLock' && !event.target.id.match(/.*(Shift)/)) {
             event.target.classList.remove('active');
             event.target.parentNode.classList.remove('active');
+            event.relatedTarget.classList.remove('active'); //CHECK!!!
+        }
+    }
+
+    MouseOut () {
+        if (event.target === event.relatedTarget) {
+            return;
+        } else {
+            event.target.classList.remove('active');
         }
     }
 
