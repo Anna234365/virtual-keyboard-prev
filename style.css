@@ -121,3 +121,14 @@ html {
     justify-content: flex-start;
     transition: 0.5s;
 }
+
+.bill {
+    display: none;
+    position: absolute;
+    top: calc(50vh - 250px);
+    left: calc(50vw - 300px);
+    width: 480px;
+    height: 320px;
+    background-image: url("./bill.png");
+    background-size: 100%;
+}

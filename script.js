@@ -95,6 +95,7 @@ class Keyboards {
         this.myKeyboard = document.createElement('div');
         this.info = document.createElement('div');
         this.button = document.createElement('div');
+        this.bill = document.createElement('div')
         this.language = '';
         this.shiftStatus = false;
         this.CapsLockStatus = false;          
@@ -113,6 +114,8 @@ class Keyboards {
         document.body.append(this.info);
         this.info.classList.add('info');
         this.info.innerHTML = 'EN ' + '&harr;' + ' RU : ShiftLeft + ControlLeft' + '<br />' + 'Created in Windows' + '<br />' + 'Keys SHIFT and CAPSLOCK in Virtual Keyboard Mode immitate real behaviour';
+        document.body.append(this.bill);
+        this.bill.classList.add('bill');
     }
 
     createButtons() {
@@ -160,6 +163,10 @@ class Keyboards {
     RealKeyDown(event) {
         event.preventDefault();      
         if(!codesArray.includes(event.code)) {return}
+
+        if(event.code == 'MetaLeft') {
+            document.querySelector('.bill').style.display = 'block';
+        }
 
         this.printedText.focus();
 
@@ -270,6 +277,10 @@ class Keyboards {
         event.preventDefault();  
         
         if(!codesArray.includes(event.code)) {return}
+
+        if(event.code == 'MetaLeft') {
+            document.querySelector('.bill').style.display = 'none';
+        }
 
         if (AllCodesAndKeys[event.code][0] == 'Shift') {
             this.shiftStatus = false;
