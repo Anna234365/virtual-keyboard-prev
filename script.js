@@ -159,6 +159,8 @@ class Keyboards {
 
     RealKeyDown(event) {
         event.preventDefault();      
+        if(!codesArray.includes(event.code)) {return}
+
         this.printedText.focus();
 
         if (AllCodesAndKeys[event.code][0] == 'CapsLock') {
@@ -175,7 +177,6 @@ class Keyboards {
         }
 
         if (event.code.match(/(Arrow).*/)) {
-            console.log('YES')
             this.printedText.selectionStart = this.printedText.selectionStart + AllCodesAndKeys[event.code][0];
             this.printedText.selectionEnd = this.printedText.selectionStart;
         }
@@ -187,6 +188,9 @@ class Keyboards {
             
             } else if (this.shiftStatus == true && this.CapsLockStatus == false) {
                 this.printedText.value += AllCodesAndKeys[event.code][1];
+                // this.shiftStatus = false;
+                // ShiftLeft.classList.remove('active');
+                // ShiftRight.classList.remove('active');
             }
 
             else if (this.shiftStatus == false && this.CapsLockStatus == true) {
@@ -199,8 +203,14 @@ class Keyboards {
             } else if (this.shiftStatus == true && this.CapsLockStatus == true) {
                 if (!event.code.match(/(Digit)[0-9]/) && !event.code.match(/.*(ash)/) && event.code != 'Backquote') {
                     this.printedText.value += AllCodesAndKeys[event.code][0];
+                    // this.shiftStatus = false;
+                    // ShiftLeft.classList.remove('active');
+                    // ShiftRight.classList.remove('active');
                 } else {
                     this.printedText.value += AllCodesAndKeys[event.code][1];
+                    // this.shiftStatus = false;
+                    // ShiftLeft.classList.remove('active');
+                    // ShiftRight.classList.remove('active');
                 } 
             }         
 
@@ -211,6 +221,10 @@ class Keyboards {
             
             } else if (this.shiftStatus == true && this.CapsLockStatus == false) {
                 this.printedText.value += AllCodesAndKeys[event.code][3];
+
+                // this.shiftStatus = false;
+                // ShiftLeft.classList.remove('active');
+                // ShiftRight.classList.remove('active');
             }
 
             else if (this.shiftStatus == false && this.CapsLockStatus == true) {
@@ -224,8 +238,15 @@ class Keyboards {
             } else if (this.shiftStatus == true && this.CapsLockStatus == true) {
                 if (!event.code.match(/(Digit)[0-9]/) && !event.code.match(/.*(ash)/)) {
                     this.printedText.value += AllCodesAndKeys[event.code][2];
+
+                    // this.shiftStatus = false;
+                    // ShiftLeft.classList.remove('active');
+                    // ShiftRight.classList.remove('active');
                 } else {
                     this.printedText.value += AllCodesAndKeys[event.code][3];
+                    // this.shiftStatus = false;
+                    // ShiftLeft.classList.remove('active');
+                    // ShiftRight.classList.remove('active');
                 } 
             }         
         
@@ -247,6 +268,8 @@ class Keyboards {
 
     RealKeyUp(event) {
         event.preventDefault();  
+        
+        if(!codesArray.includes(event.code)) {return}
 
         if (AllCodesAndKeys[event.code][0] == 'Shift') {
             this.shiftStatus = false;
