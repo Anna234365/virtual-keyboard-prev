@@ -113,7 +113,7 @@ class Keyboards {
         this.myKeyboard.className = 'keyboard';
         document.body.append(this.info);
         this.info.classList.add('info');
-        this.info.innerHTML = 'EN ' + '&harr;' + ' RU : ShiftLeft + ControlLeft' + '<br />' + 'Created in Windows' + '<br />' + 'Keys SHIFT and CAPSLOCK in Virtual Keyboard Mode immitate real behaviour';
+        this.info.innerHTML = 'Смена языка: ShiftLeft + ControlLeft. ' + 'На виртуальной клавиатуре сначала нажать ShiftLeft, затем - ConrolLeft.' + '<br />' + 'Создано в ОС Windows' + '<br />' + 'Поведение клавиш SHIFT и CAPSLOCK в виртуальном режиме имитирует реальное поведение';
         document.body.append(this.bill);
         this.bill.classList.add('bill');
     }

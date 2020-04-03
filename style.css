@@ -6,6 +6,7 @@
 
 html {
     font-size: 10px;
+    background-color: rgb(253, 228, 242);
 }
 
 .virtualDisplay {
@@ -30,7 +31,7 @@ html {
 }
 
 .currentLanguage {
-    color: rgb(211, 144, 238);
+    color: rgb(115, 114, 116);
     font-size: 3.5rem;
     font-weight: 900;
     float: right;
@@ -52,11 +53,10 @@ html {
 
 .info {
     display: block;
-    margin: 10px 0 0 calc(50vw - 442px);
+    margin: 10px 0 0 calc(50vw - 450px);
     border-radius: 10px;
-    color: rgb(164, 161, 165);
+    color: rgb(115, 114, 116);
     font-size: 1.6rem;
-    width: 600px;
     padding: 5px 20px;
     text-align: left;
     font-family: "Roboto";
