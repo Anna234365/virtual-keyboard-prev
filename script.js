@@ -68,7 +68,7 @@ const AllCodesAndKeys = {
     Comma: [',', '<', 'б', 'Б'],
     Period: ['.', '>', 'ю', 'Ю'],
     Slash: ['/', '?', '.', ','],
-    ArrowUp: [-60, 'controlButton'],
+    ArrowUp: ['&uarr;', 'controlButton'],
     ShiftRight: ['Shift', 'controlButton'],
     
     ControlLeft: ['Control', 'controlButton'],
@@ -77,9 +77,9 @@ const AllCodesAndKeys = {
     Space: [' ', ' ', ' ', ' '], 
     AltRight: ['Alt', 'controlButton'],
     ControlRight: ['Control', 'controlButton'],
-    ArrowLeft: [-1, 'controlButton'],
-    ArrowDown: [60, 'controlButton'],
-    ArrowRight: [1, 'controlButton'],
+    ArrowLeft: ['&larr;', 'controlButton'],
+    ArrowDown: ['&darr;', 'controlButton'],
+    ArrowRight: ['&rarr;', 'controlButton'],
 }
 
 const codesArray = Object.keys(AllCodesAndKeys);
@@ -184,8 +184,7 @@ class Keyboards {
         }
 
         if (event.code.match(/(Arrow).*/)) {
-            this.printedText.selectionStart = this.printedText.selectionStart + AllCodesAndKeys[event.code][0];
-            this.printedText.selectionEnd = this.printedText.selectionStart;
+            this.printedText.value += document.getElementById(`${event.code}`).innerHTML;
         }
 
         if (this.language == 'EN' && AllCodesAndKeys[event.code][1] != 'controlButton') {
@@ -195,9 +194,6 @@ class Keyboards {
             
             } else if (this.shiftStatus == true && this.CapsLockStatus == false) {
                 this.printedText.value += AllCodesAndKeys[event.code][1];
-                // this.shiftStatus = false;
-                // ShiftLeft.classList.remove('active');
-                // ShiftRight.classList.remove('active');
             }
 
             else if (this.shiftStatus == false && this.CapsLockStatus == true) {
@@ -210,14 +206,8 @@ class Keyboards {
             } else if (this.shiftStatus == true && this.CapsLockStatus == true) {
                 if (!event.code.match(/(Digit)[0-9]/) && !event.code.match(/.*(ash)/) && event.code != 'Backquote') {
                     this.printedText.value += AllCodesAndKeys[event.code][0];
-                    // this.shiftStatus = false;
-                    // ShiftLeft.classList.remove('active');
-                    // ShiftRight.classList.remove('active');
                 } else {
                     this.printedText.value += AllCodesAndKeys[event.code][1];
-                    // this.shiftStatus = false;
-                    // ShiftLeft.classList.remove('active');
-                    // ShiftRight.classList.remove('active');
                 } 
             }         
 
@@ -228,10 +218,6 @@ class Keyboards {
             
             } else if (this.shiftStatus == true && this.CapsLockStatus == false) {
                 this.printedText.value += AllCodesAndKeys[event.code][3];
-
-                // this.shiftStatus = false;
-                // ShiftLeft.classList.remove('active');
-                // ShiftRight.classList.remove('active');
             }
 
             else if (this.shiftStatus == false && this.CapsLockStatus == true) {
@@ -245,15 +231,8 @@ class Keyboards {
             } else if (this.shiftStatus == true && this.CapsLockStatus == true) {
                 if (!event.code.match(/(Digit)[0-9]/) && !event.code.match(/.*(ash)/)) {
                     this.printedText.value += AllCodesAndKeys[event.code][2];
-
-                    // this.shiftStatus = false;
-                    // ShiftLeft.classList.remove('active');
-                    // ShiftRight.classList.remove('active');
                 } else {
                     this.printedText.value += AllCodesAndKeys[event.code][3];
-                    // this.shiftStatus = false;
-                    // ShiftLeft.classList.remove('active');
-                    // ShiftRight.classList.remove('active');
                 } 
             }         
         
@@ -269,8 +248,7 @@ class Keyboards {
         
         } else if (event.code == 'Enter') {
             this.printedText.setRangeText('\n', this.printedText.selectionStart, this.printedText.selectionEnd, 'end');
-        }
-        
+        } 
     }
 
     RealKeyUp(event) {
@@ -407,9 +385,9 @@ class Keyboards {
         
         } else if (event.target.id == 'Enter') {
             this.printedText.setRangeText('\n', this.printedText.selectionStart, this.printedText.selectionEnd, 'end');
-        
+            
         } else if (event.target.id.match(/(Arrow).*/)) {
-            this.printedText.setRangeText(event.target.innerHTML, this.printedText.selectionStart, this.printedText.selectionEnd, 'end');
+            this.printedText.value += event.target.innerHTML;
         }
 
     }

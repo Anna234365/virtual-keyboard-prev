@@ -9,8 +9,9 @@ html {
 }
 
 .virtualDisplay {
+    top: 20px;
     display: flex;
-    margin: 10px auto;
+    margin: 0 auto;
     font-family: "Roboto";
     width: 924px;
     position: relative;
@@ -20,8 +21,8 @@ html {
 .printedText {
     width: 864px;
     height: 200px;
-    border: 3px solid rgb(184, 180, 185);
-    border-radius: 10px;
+    border: 2px solid rgb(154, 152, 155);
+    border-radius: 5px;
     font-size: 2rem;
     padding: 10px 20px;
     color: rgb(110, 48, 134);
@@ -43,7 +44,7 @@ html {
     background-color: rgb(43, 179, 133);
     display: flex;
     flex-wrap: wrap;
-    padding: 15px 30px;
+    padding: 40px 30px 15px 30px;
     width: 884px;
     margin: auto;
     border-radius: 10px;
