@@ -6,7 +6,7 @@
 
 html {
     font-size: 10px;
-    background-color: rgb(253, 228, 242);
+    background-color: rgb(221, 255, 244);
 }
 
 .virtualDisplay {
@@ -22,7 +22,6 @@ html {
 .printedText {
     width: 864px;
     height: 200px;
-    border: 2px solid rgb(154, 152, 155);
     border-radius: 5px;
     font-size: 2rem;
     padding: 10px 20px;
@@ -48,7 +47,7 @@ html {
     padding: 40px 30px 15px 30px;
     width: 884px;
     margin: auto;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .info {
@@ -62,6 +61,7 @@ html {
     font-family: "Roboto";
     font-weight: 500;
     user-select: none;
+    height: 100vh;
 }
 
 .button {
